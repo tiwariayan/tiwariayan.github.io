@@ -1,0 +1,24 @@
+[meta title:"Assignment10" description:"Showcasing the Idyll Part - Assignment 10" /]
+
+[Header
+  fullWidth:true
+  title:"Assignment 10"
+  subtitle:"Idyll portion"
+  author:"Ayan Tiwari"
+  authorLink:"https://idyll-lang.org"
+  date:`(new Date()).toDateString()`
+  background:"#222222"
+  color:"#ffffff"
+   /]
+
+
+[Float position:"Left"]
+  [img src:"https://www.freepnglogos.com/uploads/discord-logo-png/discord-logo-logodownload-download-logotipos-1.png" style:`{height:300}`/]
+[/Float]
+
+
+
+[Float position:"Right"]
+   [img src:"https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Steam_icon_logo.svg/512px-Steam_icon_logo.svg.png?20151224085534" style:`{height:300}`/]
+
+[/Float]
