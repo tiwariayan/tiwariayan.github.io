@@ -1,0 +1,91 @@
+# %% [markdown]
+# Final_Project_Part3
+Try editing this cell by clicking the pencil on the left!
+# %% [javascript]
+// these are import calls for specific packages that we need to use vega-lite
+await import("https://cdn.jsdelivr.net/npm/vega@5.20.2/build/vega.min.js");
+await import("https://cdn.jsdelivr.net/npm/vega-lite@5.1.0/build/vega-lite.min.js");
+await import("https://cdn.jsdelivr.net/npm/vega-embed@6.18.2/build/vega-embed.min.js");
+// NOTE: we can set this to run on notebook start up if we want to make sure things load automatically
+# %% [javascript]
+vegaEmbed
+# %% [markdown]
+### Plot 1
+# %% [html]
+<div id="plot1"></div>
+# %% [javascript]
+var plot1 = {
+  data: {"url":"https://sds-platform-private.s3-us-east-2.amazonaws.com/uploads/P1-UK-Bank-Customers.csv"},
+  hconcat:[
+    { // plot 1 part 1
+      	"params": [{"name": "pts", "select": "interval"}],
+
+	    // Marks
+  		mark:"rect",
+  		height:"200",
+        width:"200",
+  		encoding:{
+    		"y":{"bin":{"maxbins":10}, "field":"Balance", "type":"quantitative"},
+    		"x":{"bin":{"maxbins":5},"field":"Age","type":"nominal"},
+    		"color":{"aggregate":"count", "type":"quantitative"} 
+  }
+    }, // end plot 1 part 1
+    { // plot 1 part 2
+  		// Marks
+      	  transform:[{"filter":{"param":"pts"}}], 
+  		  mark: "bar",
+      	  height:"400",
+          width:"400",
+
+
+  		encoding:{
+    		"x":{"field":"Job Classification", "type":"ordinal",  "axis":{"title":"Job Classification count"}},
+    		"y":{"aggregate":"count","type":"quantitative", "axis":{"title":"Distribution of Account Balance"}}
+  }    
+    } // end plot 1 part 2
+
+
+  ] 
+  
+};
+var v = vegaEmbed('#plot1',plot1);
+# %% [markdown]
+### Plot 2
+# %% [html]
+<div id="plot2"></div>
+# %% [javascript]
+var plot2 = {
+  data: {"url":"https://sds-platform-private.s3-us-east-2.amazonaws.com/uploads/P1-UK-Bank-Customers.csv"},
+  hconcat:[
+    { // plot 2 part 1
+      	"params": [{"name": "pts", "select": "interval"}],
+
+	    // Marks
+  		mark:"rect",
+  		height:"200",
+        width:"200",
+  		encoding:{
+    		"y":{"bin":{"maxbins":10}, "field":"Balance", "type":"quantitative"},
+    		"x":{"field":"Region","type":"nominal"},
+    		"color":{"aggregate":"count", "type":"quantitative"} 
+  }
+    }, // end plot 2 part 1
+    { // plot 2 part 2
+  		// Marks
+      	  transform:[{"filter":{"param":"pts"}}], 
+  		  mark: "bar",
+      	  height:"400",
+          width:"400",
+
+
+  		encoding:{
+    		"x":{"field":"Gender", "type":"ordinal",  "axis":{"title":"Gender count"}},
+    		"y":{"aggregate":"count","type":"quantitative", "axis":{"title":"Distribution of Account Balance"}}
+  }    
+    } // end plot 2 part 2
+
+
+  ] 
+  
+};
+var v = vegaEmbed('#plot2',plot2);
